@@ -3,10 +3,30 @@
     <head>
         <title>API Test</title>
         <script>
-            document.addEventListener("DOMContentLoaded", progress);
+
+            document.addEventListener("DOMContentLoaded", function(){
+                document.querySelectorAll('button').forEach(button => {
+                    button.onclick = () =>{
+                        progress();
+                    }
+              })
+            })
+
             function progress(){
 
-                fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2024-01-20")
+                fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2025-01-21")
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.querySelector("#contents");
+
+                    const content = `
+                        <h2>${data.title}</h2>
+                        <img src="${data.url}" alt="${data.title}" style="max-width: 100%; height: auto;">
+                        <p>${data.explanation}</p>
+                    `;
+
+                    container.innerHTML = content;
+                })
             }
 
         </script>
@@ -14,5 +34,7 @@
     <body>
         <div id="contents">
         </div>
+
+        <button id="button1">Click Me!</button>
     </body>
 </html>
