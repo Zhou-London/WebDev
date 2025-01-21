@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>API Test</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", progress);
+            function progress(){
+
+                fetch("https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY&date=2024-01-20")
+            }
+
+        </script>
+    </head>
+    <body>
+        <div id="contents">
+        </div>
+    </body>
+</html>
